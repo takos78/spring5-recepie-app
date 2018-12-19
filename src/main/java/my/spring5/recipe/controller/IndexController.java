@@ -1,4 +1,4 @@
-package my.spring5.recepie.controller;
+package my.spring5.recipe.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package my.spring5.recepie.domain;
+package my.spring5.recipe.domain;
 
 public enum Difficulty {
 	EASY, MODERATE, HARD
