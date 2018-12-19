@@ -1,5 +1,6 @@
 package my.spring5.recipe.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -10,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
@@ -18,9 +18,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Data
+@EqualsAndHashCode(exclude = {"note", "ingredients", "categories", "image"})
+@ToString(exclude = {"note", "ingredients", "categories", "image"})
 public class Recipe {
 
 	@Id
@@ -48,14 +54,14 @@ public class Recipe {
 	private Byte[] image;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	private Notes notes;
+	private Note note;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-	private Set<Ingredient> ingredients;
+	private Set<Ingredient> ingredients = new HashSet<>();
 	
 	@ManyToMany
 	@JoinTable(name = "RECIPE_CATEGORY", 
 		joinColumns = @JoinColumn(name = "recipe_id"),
 		inverseJoinColumns = @JoinColumn(name = "category_id"))
-	private Set<Category> categories;
+	private Set<Category> categories = new HashSet<>();
 }

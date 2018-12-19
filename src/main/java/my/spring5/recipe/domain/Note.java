@@ -8,10 +8,14 @@ import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Entity
 @Data
-public class Notes {
+@EqualsAndHashCode(exclude = {"recipe"})
+@ToString(exclude = {"recipe"})
+public class Note {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
