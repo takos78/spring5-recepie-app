@@ -11,10 +11,14 @@ import javax.persistence.OneToOne;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 @Entity
 @Data
+@NoArgsConstructor(force = true)
+@RequiredArgsConstructor
 @EqualsAndHashCode(exclude = {"recipe"})
 @ToString(exclude = {"recipe"})
 public class Ingredient {
@@ -23,13 +27,13 @@ public class Ingredient {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String description;
+	private final String description;
 	
-	private BigDecimal amount;
+	private final BigDecimal amount;
 	
 	@ManyToOne
 	private Recipe recipe;
 	
 	@OneToOne
-	private UnitOfMeasure unitOfMeasure;
+	private final UnitOfMeasure unitOfMeasure;
 }

@@ -44,10 +44,6 @@ public class DataLoader implements CommandLineRunner {
 		
 		Recipe recipe1 = new Recipe();
 		
-		Note note1 = new Note();
-		note1.setRecipeNotes("Note1: This should be delicious!");
-		note1.setRecipe(recipe1);
-		
 		Category cat1 = catRepo.findByDescription("American").get();
 		Category cat2 = catRepo.findByDescription("Italian").get();
 		cat1.getRecipes().add(recipe1);
@@ -56,28 +52,17 @@ public class DataLoader implements CommandLineRunner {
 		UnitOfMeasure uomCup = uomRepo.findByDescription("Cup").get();
 		UnitOfMeasure uomPinch = uomRepo.findByDescription("Pinch").get();
 		
-		Ingredient ingredient1 = new Ingredient();
-		ingredient1.setDescription("tea");
-		ingredient1.setAmount(new BigDecimal(2.5));
-		ingredient1.setUnitOfMeasure(uomCup);
-		ingredient1.setRecipe(recipe1);
-
-		Ingredient ingredient2 = new Ingredient();
-		ingredient2.setDescription("stuff");
-		ingredient2.setAmount(new BigDecimal(1.5));
-		ingredient2.setUnitOfMeasure(uomPinch);
-		ingredient2.setRecipe(recipe1);
+		recipe1.addIngredient(new Ingredient("tea", new BigDecimal(2.5), uomCup));
+		recipe1.addIngredient(new Ingredient("stuff", new BigDecimal(1.5), uomPinch));
+		
+		recipe1.addNote(new Note("Note1: This should be delicious!"));
 		
 		recipe1.setDifficulty(Difficulty.MODERATE);
 		recipe1.setDirections("Cook it well");
-		recipe1.setNote(note1);
 		
 		recipe1.getCategories().add(cat1);
 		recipe1.getCategories().add(cat2);
-		
-		recipe1.getIngredients().add(ingredient1);
-		recipe1.getIngredients().add(ingredient2);
-		
+				
 		recipe1.setCookTime(2);
 		recipe1.setDescription("This text should explain what it is (description)");
 		recipe1.setPrepTime(1);

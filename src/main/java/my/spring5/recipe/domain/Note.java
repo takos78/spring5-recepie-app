@@ -9,10 +9,14 @@ import javax.persistence.OneToOne;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 @Entity
 @Data
+@NoArgsConstructor(force = true)
+@RequiredArgsConstructor
 @EqualsAndHashCode(exclude = {"recipe"})
 @ToString(exclude = {"recipe"})
 public class Note {
@@ -25,6 +29,6 @@ public class Note {
 	private Recipe recipe;
 	
 	@Lob
-	private String recipeNotes;
+	private final String recipeNotes;
 	
 }

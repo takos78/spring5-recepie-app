@@ -32,7 +32,8 @@ public class Recipe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
+	@Lob
 	private String description;
 	
 	private Integer prepTime;
@@ -64,4 +65,16 @@ public class Recipe {
 		joinColumns = @JoinColumn(name = "recipe_id"),
 		inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private Set<Category> categories = new HashSet<>();
+	
+	public Recipe addIngredient(Ingredient ingredient) {
+		ingredient.setRecipe(this);
+		ingredients.add(ingredient);
+		return this;
+	}
+	
+	public Recipe addNote(Note note) {
+		note.setRecipe(this);
+		this.note = note;
+		return this;
+	}
 }
