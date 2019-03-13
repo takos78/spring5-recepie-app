@@ -43,6 +43,7 @@ public class DataLoader implements CommandLineRunner {
 	private void loadData() {
 		
 		Recipe recipe1 = new Recipe();
+		recipe1.setName("Bableves");
 		
 		Category cat1 = catRepo.findByDescription("American").get();
 		Category cat2 = catRepo.findByDescription("Italian").get();

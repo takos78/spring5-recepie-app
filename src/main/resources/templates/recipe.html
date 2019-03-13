@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Recipes</title>
+</head>
+<body>
+<h1>My Recipes</h1>
+
+<h2>Description</h2>
+<p th:text="${recipe.getDescription()}">desc</p>
+
+<h2>Data</h2>
+<p th:text="'Preparation time: ' + ${recipe.getPrepTime()}">prepTime</p>
+<p th:text="'Cooking time: ' + ${recipe.getCookTime()}">cookTime</p>
+<p th:text="'Servings: ' + ${recipe.getServings()}">servings</p>
+<p th:text="'Difficulty: ' + ${recipe.getDifficulty()}">servings</p>
+
+<h2>Source</h2>
+<p th:text="${recipe.getSource()}">Source</p>
+
+<h2>URL</h2>
+<p th:text="${recipe.getUrl()}">url</p>
+
+
+<h2>Ingredients</h2>
+<table>
+	<tr th:each="ingredient : ${recipe.ingredients}">
+		<td th:text="${ingredient.description}">-1</td>
+		<td th:text="${ingredient.amount}">lastName</td>
+		<td th:text="${ingredient.unitOfMeasure.description}">lastName</td>
+	</tr>
+</table>
+
+<h2>Directions</h2>
+<p th:text="${recipe.getDirections()}">directions</p>
+
+<h2>Note</h2>
+<p th:text="${recipe.getNote().getRecipeNotes()}">notes</p>
+
+<h2>Categories</h2>
+<table>
+	<tr th:each="category : ${recipe.categories}">
+		<td th:text="${category.description}">category</td>
+	</tr>
+</table>
+
+<hr>
+</body>
+</html>
