@@ -15,7 +15,7 @@ import my.spring5.recipe.domain.UnitOfMeasure;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class UnitOfMeasureRepositoryTest {
+public class UnitOfMeasureRepositoryIT {
 	
 	@Autowired
 	public UnitOfMeasureRepository repository;
