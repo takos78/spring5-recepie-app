@@ -4,15 +4,22 @@
 	<meta charset="UTF-8">
 	<title>Recipes</title>
 	
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" 
-		integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" 
-		crossorigin="anonymous">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+		crossorigin="anonymous"
+		th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
 
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" 
-		integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" 
-		crossorigin="anonymous"></script>	
+
+	<!-- Bootstrap JavaScript -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
+		crossorigin="anonymous"
+		th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+		
+	<!-- Bootstrap JQuery -->
+	<script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
+
 </head>
 <body>
 <div class="container-fluid" style="margin-top: 20px">
@@ -27,17 +34,20 @@
 						<table class="table table-hover ">
 							<thead class="thead-inverse">
 								<tr>
+								    <th>&nbsp;</th>
 									<th>ID</th>
 									<th>Name</th>
 									<th>Description</th>
 								</tr>
 							</thead>
 							<tr th:remove="all">
-								<td th:text="${recipe.id}">7777</td>
-								<td th:text="${recipe.name}">7777</td>
-								<td th:text="${recipe.description}">yammie</td>
+								<td><a href="#">View</a></td>
+								<td>7777</td>
+								<td>7777</td>
+								<td>yammie</td>
 							</tr>
 							<tr th:each="recipe : ${recipes}">
+								<td><a href="#" th:href="@{'/recipe?id=' + ${recipe.id}}">View</a></td>										
 								<td th:text="${recipe.id}">7777</td>
 								<td th:text="${recipe.name}">7777</td>
 								<td th:text="${recipe.description}">yammie</td>
